@@ -4,10 +4,11 @@ import numpy as np
 from sim_class import Simulation
 
 class OT2Env(gym.Env):
-    def __init__(self, render=False, max_steps=1000):
+    def __init__(self, render=False, max_steps=1000, target_threshold=0.002):
         super(OT2Env, self).__init__()
         self.render = render
         self.max_steps = max_steps
+        self.target_threshold = target_threshold
         
         # Create the simulation environment
         self.sim = Simulation(num_agents=1, render=render)
@@ -104,7 +105,7 @@ class OT2Env(gym.Env):
         # Check if the task has been completed
         # Distance threshold: 2mm (0.002m) - reasonable for pipette tip precision
         # This is smaller than typical plant features but achievable with good control
-        if distance < 0.002:
+        if distance < self.target_threshold:
             terminated = True
             # Give the agent a positive reward for completing the task
             reward += 10.0
