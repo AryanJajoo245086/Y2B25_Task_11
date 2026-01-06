@@ -17,7 +17,7 @@ from aryan_jajoo_ot2_gym_wrapper import OT2Env
 # CONFIGURATION
 # ============================================================================
 PERSON_NAME = "aryan_jajoo"
-BRANCH_NAME = "aryan_jajoo_task11"  # Change this to your branch name
+BRANCH_NAME = "aryan_jajoo_task11"
 
 # Generate timestamp for unique task name and model filename
 timestamp = datetime.now().strftime("%y%m%d.%H%M")
